@@ -28,11 +28,12 @@ function PokemonDetail({ pokemon }: PokemonDetailProps) {
             pokemon.id
           )}`}</h6>
         </div>
-        <div className="relative aspect-square w-[96px]">
+        <div className="relative w-[96px] h-[96px]">
           <Image
             alt={pokemon.korean_name}
             src={pokemon.sprites.front_default}
-            fill
+            width={96}
+            height={96}
             className="object-cover"
           />
         </div>
@@ -46,7 +47,7 @@ function PokemonDetail({ pokemon }: PokemonDetailProps) {
           ).toFixed(1)} kg`}</p>
         </div>
         <div className="flex gap-2 my-2">
-          <p className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             타입:
             {pokemon.types.map((type) => (
               <div
@@ -56,8 +57,8 @@ function PokemonDetail({ pokemon }: PokemonDetailProps) {
                 {type.type.korean_name}
               </div>
             ))}
-          </p>
-          <p className="flex items-center gap-2">
+          </div>
+          <div className="flex items-center gap-2">
             특성:
             {pokemon.abilities.map((ability) => (
               <div
@@ -67,12 +68,14 @@ function PokemonDetail({ pokemon }: PokemonDetailProps) {
                 {ability.ability.korean_name}
               </div>
             ))}
-          </p>
+          </div>
         </div>
         <p>기술:</p>
-        <p className="text-center px-4 break-words break-keep mb-4">
-          {pokemon.moves.map((move) => move.move.korean_name).join(" ")}
-        </p>
+        <div className="text-center px-4 break-words break-keep mb-4">
+          {pokemon.moves.map((move) => (
+            <span key={move.move.korean_name}>{move.move.korean_name} </span>
+          ))}
+        </div>
         <div className="mb-2">
           <BackButton>뒤로 가기</BackButton>
         </div>
