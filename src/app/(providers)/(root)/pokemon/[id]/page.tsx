@@ -1,12 +1,12 @@
 import PokemonDetail from "@/components/PokemonDetail";
+import { fetchPokemonData } from "@/components/util/fetchPokemonData";
 
 export default async function PokemonDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const res = await fetch(`http://localhost:3000/api/pokemons/${params.id}`);
-  const pokemonData = await res.json();
+  const pokemonData = await fetchPokemonData(params.id);
 
   return <PokemonDetail pokemon={pokemonData} />;
 }

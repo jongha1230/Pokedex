@@ -61,7 +61,9 @@ function PokemonDetail({ pokemon }: PokemonDetailProps) {
         <p className="text-center px-4 break-words break-keep mb-4">
           {pokemon.moves.map((move) => move.move.korean_name).join(" ")}
         </p>
-        <BackButton>뒤로 가기</BackButton>
+        <div className="mb-2">
+          <BackButton>뒤로 가기</BackButton>
+        </div>
       </div>
     </div>
   );

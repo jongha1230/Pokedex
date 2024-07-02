@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
 
-const TOTAL_POKEMON = 151;
+const TOTAL_POKEMON = 151 + 100 + 135; // 3세대 까지
 const POKEMON_PER_PAGE = 20;
 
 export const GET = async (request: Request) => {
