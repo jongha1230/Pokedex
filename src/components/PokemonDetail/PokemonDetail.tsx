@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import BackButton from "../Button/Button";
 import { padNumberToFourDigits } from "../util/padNumberToFourDigits";
 
@@ -7,9 +10,18 @@ type PokemonDetailProps = {
 };
 
 function PokemonDetail({ pokemon }: PokemonDetailProps) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
   return (
     <div className="grid h-screen place-items-center text-black">
-      <div className="flex flex-col items-center bg-white w-1/3 h-3/4">
+      <div className="flex flex-col justify-between items-center bg-white w-1/3 h-3/4 gap-2 overflow-auto">
         <div className="bg-gray-200 w-full h-18 text-center">
           <h2 className=" font-bold text-xl py-2.5">{pokemon.korean_name}</h2>
           <h6 className="font-semibold pb-2.5 text-sm">{`No. ${padNumberToFourDigits(
